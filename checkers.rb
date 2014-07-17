@@ -151,19 +151,20 @@ class Board
 
   def display(select = nil)
     system 'clear'
-    puts "+ ABCDEFGH".colorize(:light_white).on_black
+    puts " +  A  B  C  D  E  F  G  H ".colorize(:light_white).on_black
     i = 0
     bg = :black
     @grid.each do |row|
-      print "#{i += 1}".colorize(:light_white).on_black + ' '
+      print " #{i += 1} ".colorize(:light_white).on_black
       row.each do |piece|
         bg = bg == :black ? :red : :black
         str = ''
         if piece
           str = select && piece == select ? piece.symbol.blink : piece.symbol
         else
-          str << ' '
+          str = ' '
         end
+        str = ' ' + str + ' '
         print str.colorize(:background => bg)
       end
       bg = bg == :black ? :red : :black
